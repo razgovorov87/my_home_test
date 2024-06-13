@@ -1,16 +1,15 @@
-# my_home_test
+# MyHomeTest (Тестовое приложение для DNS)
 
-A new Flutter project.
 
-## Getting Started
+## О проекте
 
-This project is a starting point for a Flutter application.
+Первый экран - авторизация, для входа необходимо ввести перейти на экран регистрации, ввести данные, после чего авторизоваться с этими же данными
+Если одно или более полей для ввода будут пустые - появится ошибка, так же ошибка появится при неправильном вводе логина или пароля
 
-A few resources to get you started if this is your first Flutter project:
+Главный экран:
+На главном экране отображается список постов с бесплатного api. Снизу есть боттом бар, в котором можно переключаться между вкладками main flow, на экране профиля отображается логин текущего пользователя, а так же кнопка для логаута
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Запуск проекта
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    flutter pub get
+    flutter pub run build_runner build --delete-conflicting-outputs
