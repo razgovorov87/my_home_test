@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
-import 'package:either_dart/either.dart';
+import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/enum/domain_error.dart';
@@ -9,7 +9,7 @@ import '../../domain/model/user/user.dart';
 import '../../domain/repository/auth_repository.dart';
 import '../dto/auth_credential_dto/auth_credential_dto.dart';
 import '../dto/user_dto/user_dto.dart';
-import '../source/sp_source/sp_source.dart';
+import '../source/local/sp_source/sp_source.dart';
 
 @LazySingleton(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
@@ -43,6 +43,9 @@ class AuthRepositoryImpl implements AuthRepository {
     }
 
     if (authCredential.login == login && authCredential.password == hash) {
+      final UserDto currentUser = UserDto(login: login);
+      await _spSource.setCurrentUser(currentUser);
+
       return const Right<DomainError, bool>(true);
     } else {
       return const Left<DomainError, bool>(DomainError.invalidLoginOrPassword);

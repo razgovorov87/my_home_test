@@ -4,8 +4,8 @@ import 'package:injectable/injectable.dart';
 import 'package:rx_shared_preferences/rx_shared_preferences.dart';
 import 'package:rxdart/rxdart.dart';
 
-import '../../dto/auth_credential_dto/auth_credential_dto.dart';
-import '../../dto/user_dto/user_dto.dart';
+import '../../../dto/auth_credential_dto/auth_credential_dto.dart';
+import '../../../dto/user_dto/user_dto.dart';
 import 'sp_config.dart';
 
 @preResolve
@@ -24,7 +24,7 @@ class SPSource with SPConfig {
       const RxSharedPreferencesEmptyLogger(),
     );
     final SPSource instance = SPSource._(rxPrefs);
-    instance._init();
+    await instance._init();
     return instance;
   }
 
