@@ -1,4 +1,4 @@
-# MyHomeTest (Тестовое приложение для DNS)
+# MyHomeTest
 
 
 ## О проекте
